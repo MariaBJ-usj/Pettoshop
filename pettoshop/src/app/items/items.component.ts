@@ -28,7 +28,7 @@ export class ItemsComponent implements OnInit {
   }
 
   itemDetails(item: Item) {
-    if (item) this.router.navigate(['/item_details/:' + item]);
+    //if (item) this.router.navigate(['/item_details/:'+ item.name], item);
   }
 
 }

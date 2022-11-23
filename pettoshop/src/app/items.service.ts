@@ -18,4 +18,8 @@ export class ItemsService {
   getItems():Observable<any>{
     return this.http.get("http://localhost:3000/items");
   }
+
+  getItem():Observable<any>{
+    return this.http.get("http://localhost:3000/item/:id");
+  }
 }
