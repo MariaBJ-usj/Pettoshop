@@ -31,15 +31,13 @@ export class LoginComponent implements OnInit {
     this.username = data.username;
     this.password = data.password;
 
-    console.log("Username: " + this.username);
-    console.log("Password: " + this.password);
-
     this.authService.login(this.username, this.password).subscribe(
       userInfo => {
         this.authService.connectedUser = userInfo;
         if (userInfo) this.router.navigate(['/home']);
       }, error => {
         console.log("error", error)
+        alert("Username or Password is incorrect");
       });
   }
 }
