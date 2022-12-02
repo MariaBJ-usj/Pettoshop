@@ -1,4 +1,4 @@
-import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
@@ -12,13 +12,7 @@ import { ItemsComponent } from './items/items.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { ItemComponent } from './item/item.component';
-import { ItemDetailsComponent } from './item-details/item-details.component';
-import { RegisterComponent } from './register/register.component'
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import { NgIf } from '@angular/common';
-import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
-import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
+import { ItemDetailsComponent } from './item-details/item-details.component'
 
 @NgModule({
   declarations: [
@@ -30,8 +24,7 @@ import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
     CartComponent,
     ItemsComponent,
     ItemComponent,
-    ItemDetailsComponent,
-    RegisterComponent
+    ItemDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -39,16 +32,8 @@ import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    CommonModule,
-    NgbModule,
-    MDBBootstrapModule,
-    NgbCarouselModule,
-    NgIf,
-   
-    
-
+    CommonModule
   ],
-  schemas: [NO_ERRORS_SCHEMA],
   providers: [],
   bootstrap: [AppComponent]
 })
