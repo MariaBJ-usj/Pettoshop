@@ -1,0 +1,119 @@
+.footer {
+    padding: 0;
+    margin: 0;
+}
+
+.footer-title {
+    color:#1E90FF !important;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.footer-container {
+    padding: 30px;
+    margin-top: 10px;
+}
+
+.footer-contacts {
+    margin-bottom: 25px;
+}
+
+.footer-container .fa {
+    color:#1E90FF !important;
+}
+
+.footer-content {
+    color: black;
+    font-size: 14px;
+    opacity: 0.7;
+}
+
+.footer-content-link {
+    color: black;
+    font-size: 14px;
+    transition: 0.7s;
+    opacity: 0.7;
+}
+
+.footer-content-link:hover {
+   text-decoration: none;
+   color:#1E90FF !important;
+   transition: 0.7s;
+   opacity: 1;
+}
+
+.footer-content-link {
+   color: black;
+}
+
+.btn-subscribe {
+    background-color:#1E90FF;
+    color: white;
+    border-radius: 50px;
+    font-size: 16px;
+    opacity: 0.7;
+    transition:0.5s;
+    text-align: center;
+    padding: 10px;
+    margin-top: 10px; 
+}
+
+.btn-subscribe:hover {
+    opacity: 1;
+    color: white !important;
+}
+
+.form-control {
+    border-radius: 50px;
+    width: 100%;
+}
+
+.copyright {
+    background-color: rgb(209, 209, 209);
+    padding: 30px;
+}
+
+.copyright-content {
+    font-size: 12px;
+}
+
+.social-network {
+    display: inline;
+    padding: 0;
+}
+
+.social-network {
+    display: inline;
+    margin: 0 5px;
+}
+
+.social-circle a {
+    display:inline-block;
+    border-radius:50%;
+    text-align:center;
+    width: 35px;
+    height: 35px;
+    font-size:15px;
+    background-color:#1E90FF;
+}
+
+
+.social-circle i {
+    line-height:35px;
+    text-align: center;
+}
+
+.social-circle i {
+    color: white;
+}
+
+a.icoInsta, a.icoFacebook, a.icoTwitter, a.icoGoogle, a.icoVimeo, a.icoLinkedin {
+    background-color:#1E90FF;
+    opacity:0.7;
+    transition: 0.7s;
+}
+
+a.icoInsta:hover, a.icoFacebook:hover, a.icoTwitter:hover, a.icoGoogle:hover, a.icoVimeo:hover, a.icoLinkedin:hover {
+    opacity: 1;
+    transition: 0.7s;
+}
