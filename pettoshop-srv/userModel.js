@@ -15,6 +15,18 @@ const UserSchema = new mongoose.Schema({
   },
   lastname: {
     type: mongoose.Schema.Types.String
+  },
+  city: {
+    type: mongoose.Schema.Types.String
+  },
+  country: {
+    type: mongoose.Schema.Types.String
+  },
+  postalcode: {
+    type: mongoose.Schema.Types.String
+  },
+  phone: {
+    type: mongoose.Schema.Types.String
   }
 });
 

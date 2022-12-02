@@ -12,7 +12,8 @@ import { ItemsComponent } from './items/items.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { ItemComponent } from './item/item.component';
-import { ItemDetailsComponent } from './item-details/item-details.component'
+import { ItemDetailsComponent } from './item-details/item-details.component';
+import { RegisterComponent } from './register/register.component'
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ItemDetailsComponent } from './item-details/item-details.component'
     CartComponent,
     ItemsComponent,
     ItemComponent,
-    ItemDetailsComponent
+    ItemDetailsComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

@@ -10,7 +10,7 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 })
 export class LoginComponent implements OnInit {
 
-  username: string = "";
+  email: string = "";
   password: string = "";
   formData: FormGroup;
 
@@ -22,22 +22,22 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.formData = new FormGroup({
-      username: new FormControl(""),
+      email: new FormControl(""),
       password: new FormControl(""),
    });
   }
 
   submit(data:any) {
-    this.username = data.username;
+    this.email = data.email;
     this.password = data.password;
 
-    this.authService.login(this.username, this.password).subscribe(
+    this.authService.login(this.email, this.password).subscribe(
       userInfo => {
         this.authService.connectedUser = userInfo;
         if (userInfo) this.router.navigate(['/home']);
       }, error => {
         console.log("error", error)
-        alert("Username or Password is incorrect");
+        alert("Email or Password is incorrect");
       });
   }
 }

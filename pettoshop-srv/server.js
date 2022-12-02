@@ -22,13 +22,6 @@ app.use(session({
   cookie: { secure: true }
 }));
 
-// app.use((req, res, next) => {
-//   res.set('Access-Control-Allow-Origin', '*');
-//   res.set('Access-Control-Allow-Origin', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-//   res.set('Access-Control-Allow-Origin', 'X-Requested-With, content-type');
-//   res.set('Access-Control-Allow-Origin', true);
-// });
-
 const username = "MariaBJ";
 const password = "CEwXvddqMZUZ5rh";
 const cluster = "clustertest.boyxs2h";

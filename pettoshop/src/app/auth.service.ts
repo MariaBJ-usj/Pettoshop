@@ -11,7 +11,7 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  login(username: any, password: any):Observable<any>{
-    return this.http.post("http://localhost:3000/login", {username:username, password:password}, {withCredentials: true})
+  login(email: any, password: any):Observable<any>{
+    return this.http.post("http://localhost:3000/login", {email:email, password:password}, {withCredentials: true})
   }
 }

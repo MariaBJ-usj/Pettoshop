@@ -17,7 +17,7 @@ app.get("/users", async (request, response) => {
 app.post("/login", async (request, response) => {
   
   User.findOne({
-    username: request.body.username,
+    email: request.body.email,
     password: request.body.password
   }, (err, user) => {
     if (err) return response.status(401).json({msg:"ERROR"});
@@ -31,11 +31,11 @@ app.post("/login", async (request, response) => {
 app.post("/register", (req, res) => {
   
   var newUser = new User({
-    username:req.body.username,
+    email:req.body.email,
     password:req.body.password,
   });
 
-  User.countDocuments({username:newUser.username}, function(err, count){
+  User.countDocuments({email:newUser.email}, function(err, count){
     if (err) {
       return res.status(401).json({msg:"ERROR"});
     }
@@ -45,7 +45,7 @@ app.post("/register", (req, res) => {
       newUser.save((error, user)=>{
         if(error) return console.error(err);
         //req.session.userId = user._id;
-        res.status(200).json({username: user.username})
+        res.status(200).json({email: user.email})
       })
     }
   })
