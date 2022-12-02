@@ -33,6 +33,13 @@ app.post("/register", (req, res) => {
   var newUser = new User({
     email:req.body.email,
     password:req.body.password,
+    firstname:req.body.firstname,
+    lastname:req.body.lastname,
+    address:req.body.address,
+    postalcode:req.body.postalcode,
+    city:req.body.city,
+    country:req.body.country,
+    phone:req.body.phone,
   });
 
   User.countDocuments({email:newUser.email}, function(err, count){
