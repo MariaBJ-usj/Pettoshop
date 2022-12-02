@@ -20,6 +20,8 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  //test
+
   ngOnInit(): void {
     this.formData = new FormGroup({
       email: new FormControl(""),
