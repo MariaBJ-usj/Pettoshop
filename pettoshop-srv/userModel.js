@@ -16,6 +16,9 @@ const UserSchema = new mongoose.Schema({
   lastname: {
     type: mongoose.Schema.Types.String
   },
+  address: {
+    type: mongoose.Schema.Types.String
+  },
   city: {
     type: mongoose.Schema.Types.String
   },

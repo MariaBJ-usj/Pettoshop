@@ -24,20 +24,22 @@ export class LoginComponent implements OnInit {
     this.formData = new FormGroup({
       email: new FormControl(""),
       password: new FormControl(""),
-   });
+    });
   }
 
-  submit(data:any) {
+  submit(data: any) {
     this.email = data.email;
     this.password = data.password;
 
-    this.authService.login(this.email, this.password).subscribe(
-      userInfo => {
+    this.authService.login(this.email, this.password).subscribe({
+      next: userInfo => {
         this.authService.connectedUser = userInfo;
         if (userInfo) this.router.navigate(['/home']);
-      }, error => {
+      },
+      error: error => {
         console.log("error", error)
         alert("Email or Password is incorrect");
-      });
+      }
+    });
   }
 }
