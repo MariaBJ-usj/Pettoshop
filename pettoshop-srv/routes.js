@@ -14,7 +14,7 @@ app.get("/users", async (request, response) => {
   });
 });
 
-app.get("/user", async (request, response) => {
+app.post("/login", async (request, response) => {
   
   User.findOne({
     username: request.body.username,
