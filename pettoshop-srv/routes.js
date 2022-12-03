@@ -23,10 +23,21 @@ app.post("/login", async (request, response) => {
     if (err) return response.status(401).json({msg:"ERROR"});
     if (!user) return response.status(401).json({msg:"WRONG LOGIN"});
     //req.session.userId = user._id;
+
+    
+    request.session.user = user;
+    request.session.save();
+    console.log("in login get");
+    console.log(user);
+    console.log(request.session.user);
     response.status(200).json({user});
+    // return response.send("you are loged in")
+    
   });
 
 });
+
+
 
 app.post("/register", (req, res) => {
   
