@@ -4,9 +4,9 @@
 }
 
 .footer-title {
-    color:#1E90FF !important;
+    color:#3CB371 !important;
     font-weight: bold;
-    padding: 10px;
+    padding: 25px;
 }
 
 .footer-container {
@@ -16,10 +16,6 @@
 
 .footer-contacts {
     margin-bottom: 25px;
-}
-
-.footer-container .fa {
-    color:#1E90FF !important;
 }
 
 .footer-content {
@@ -33,11 +29,13 @@
     font-size: 14px;
     transition: 0.7s;
     opacity: 0.7;
+    text-decoration: none;
 }
+
 
 .footer-content-link:hover {
    text-decoration: none;
-   color:#1E90FF !important;
+   color:#3CB371 !important;
    transition: 0.7s;
    opacity: 1;
 }
@@ -46,22 +44,6 @@
    color: black;
 }
 
-.btn-subscribe {
-    background-color:#1E90FF;
-    color: white;
-    border-radius: 50px;
-    font-size: 16px;
-    opacity: 0.7;
-    transition:0.5s;
-    text-align: center;
-    padding: 10px;
-    margin-top: 10px; 
-}
-
-.btn-subscribe:hover {
-    opacity: 1;
-    color: white !important;
-}
 
 .form-control {
     border-radius: 50px;
@@ -75,45 +57,6 @@
 
 .copyright-content {
     font-size: 12px;
-}
-
-.social-network {
-    display: inline;
-    padding: 0;
-}
-
-.social-network {
-    display: inline;
-    margin: 0 5px;
-}
-
-.social-circle a {
-    display:inline-block;
-    border-radius:50%;
-    text-align:center;
-    width: 35px;
-    height: 35px;
-    font-size:15px;
-    background-color:#1E90FF;
-}
-
-
-.social-circle i {
-    line-height:35px;
     text-align: center;
 }
 
-.social-circle i {
-    color: white;
-}
-
-a.icoInsta, a.icoFacebook, a.icoTwitter, a.icoGoogle, a.icoVimeo, a.icoLinkedin {
-    background-color:#1E90FF;
-    opacity:0.7;
-    transition: 0.7s;
-}
-
-a.icoInsta:hover, a.icoFacebook:hover, a.icoTwitter:hover, a.icoGoogle:hover, a.icoVimeo:hover, a.icoLinkedin:hover {
-    opacity: 1;
-    transition: 0.7s;
-}
