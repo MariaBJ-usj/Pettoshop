@@ -1,4 +1,6 @@
+import { JsonPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { Item } from '../models/item';
 
 @Component({
   selector: 'app-item-details',
@@ -7,11 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ItemDetailsComponent implements OnInit {
 
-  item:any;
-
+  item:Item = new Item();
+  name:string = "";
+  description:string = "";
+  price:string = "";
+  image:string = "";
+  category:string = "";
+  
   constructor() { }
 
   ngOnInit(): void {
+    this.item = history.state.data;
+    this.name = this.item.name;
+    this.description = this.item.description;
+    this.price = this.item.price;
+    this.image = this.item.image;
+    this.category = this.item.category;
   }
 
 }
