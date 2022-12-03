@@ -27,6 +27,7 @@ app.post("/login", async (request, response) => {
     if (err) return response.status(401).json({msg:"ERROR"});
     if (!user) return response.status(401).json({msg:"WRONG LOGIN"});
     //req.session.userId = user._id;
+    console.log(user._id)
     response.status(200).json({user});
   });
 
