@@ -19,7 +19,7 @@ export class ItemsService {
     return this.http.get("http://localhost:3000/items");
   }
 
-  getItem():Observable<any>{
-    return this.http.get("http://localhost:3000/item/:id");
+  getItem(data: any):Observable<any>{
+    return this.http.get("http://localhost:3000/item/:"+ data);
   }
 }

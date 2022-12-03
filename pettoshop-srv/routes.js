@@ -1,6 +1,7 @@
 const express = require("express");
 const User = require("./userModel");
 const Item = require("./itemModel");
+const Order = require("./orderModel");
 const app = express();
 
 //users APIs
@@ -13,23 +14,16 @@ app.get("/users", async (request, response) => {
   });
 });
 
-app.post("/login", (req, res) => {
+app.post("/login", async (request, response) => {
   
   User.findOne({
-    username: req.body.username,
-    password: req.body.password
+    email: request.body.email,
+    password: request.body.password
   }, (err, user) => {
-    if (err) {
-      return res.status(401).json({msg:"ERROR"});
-    };
-    if (!user) {
-      return res.status(401).json({msg:"WRONG LOGIN"});
-    };
+    if (err) return response.status(401).json({msg:"ERROR"});
+    if (!user) return response.status(401).json({msg:"WRONG LOGIN"});
     //req.session.userId = user._id;
-    res.status(200).json({
-      username: user.username,
-      password: user.password
-    });
+    response.status(200).json({user});
   });
 
 });
@@ -37,11 +31,18 @@ app.post("/login", (req, res) => {
 app.post("/register", (req, res) => {
   
   var newUser = new User({
-    username:req.body.username,
+    email:req.body.email,
     password:req.body.password,
+    firstname:req.body.firstname,
+    lastname:req.body.lastname,
+    address:req.body.address,
+    postalcode:req.body.postalcode,
+    city:req.body.city,
+    country:req.body.country,
+    phone:req.body.phone,
   });
 
-  User.countDocuments({username:newUser.username}, function(err, count){
+  User.countDocuments({email:newUser.email}, function(err, count){
     if (err) {
       return res.status(401).json({msg:"ERROR"});
     }
@@ -51,7 +52,7 @@ app.post("/register", (req, res) => {
       newUser.save((error, user)=>{
         if(error) return console.error(err);
         //req.session.userId = user._id;
-        res.status(200).json({username: user.username})
+        res.status(200).json({email: user.email})
       })
     }
   })
@@ -68,16 +69,25 @@ app.get("/items", async (request, response) => {
 });
 
 app.get("/item/:id", async (request, response) => {
-  const items = await Item.find({});
+  var item = Item.findOne({
+    _id: request.body.id
+  });
 
   try {
-    response.send(items);
+    response.send(item);
   } catch (error) {
     response.status(500).send(error);
   }
 });
 
-//cart APIs
-
 //orderAPIs
+app.get("/orders", async (request, response) => {
+  Order.find((error, orders) =>{
+    if (error) {
+      return console.error(err);
+    };
+    response.json(orders);
+  });
+});
+
 module.exports = app;
