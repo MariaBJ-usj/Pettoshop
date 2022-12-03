@@ -2,6 +2,10 @@ const express = require("express");
 const User = require("./userModel");
 const Item = require("./itemModel");
 const Order = require("./orderModel");
+const { 
+  v1: uuidv1,
+  v4: uuidv4,
+} = require('uuid');
 const app = express();
 
 //users APIs
@@ -23,13 +27,6 @@ app.post("/login", async (request, response) => {
     if (err) return response.status(401).json({msg:"ERROR"});
     if (!user) return response.status(401).json({msg:"WRONG LOGIN"});
     //req.session.userId = user._id;
-
-    
-    request.session.user = user;
-    request.session.save();
-    console.log("in login get");
-    console.log(user);
-    console.log(request.session.user);
     response.status(200).json({user});
     // return response.send("you are loged in")
     
@@ -40,8 +37,9 @@ app.post("/login", async (request, response) => {
 
 
 app.post("/register", (req, res) => {
-  
-  var newUser = new User({
+   
+  console.log("here")
+  const newUser = new User({
     email:req.body.email,
     password:req.body.password,
     firstname:req.body.firstname,
@@ -53,7 +51,7 @@ app.post("/register", (req, res) => {
     phone:req.body.phone,
   });
 
-  User.countDocuments({email:newUser.email}, function(err, count){
+  User.countDocuments({email: newUser.email}, function(err, count){
     if (err) {
       return res.status(401).json({msg:"ERROR"});
     }

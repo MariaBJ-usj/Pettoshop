@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ItemDetailsComponent implements OnInit {
 
+  item:any;
+
   constructor() { }
 
   ngOnInit(): void {

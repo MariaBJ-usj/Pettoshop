@@ -42,6 +42,7 @@ export class RegisterComponent implements OnInit {
   }
 
   submit(data: any) {
+    alert(this.address);
     this.email = data.email;
     this.password = data.password;
     this.firstname = data.firstname;
@@ -51,18 +52,20 @@ export class RegisterComponent implements OnInit {
     this.city = data.city;
     this.country = data.country;
     this.phone = data.phone;
+    alert(this.address);
 
-    this.authService.register(this.email, this.password, this.firstname, this.lastname, 
-      this.address, this.postalcode, this.city, this.country, this.phone).subscribe ({
-      next: userInfo => {
-        this.authService.connectedUser = userInfo;
-        if (userInfo) this.router.navigate(['/home']);
-      },
-      error: error => {
-        console.log("error", error)
-        alert("User already exists. Please login.");
-      }
-    });
+    this.authService.register(this.email, this.password, this.firstname, this.lastname,
+      this.address, this.postalcode, this.city, this.country, this.phone).subscribe
+      ({
+        next: userInfo => {
+          alert("Im here");
+          this.authService.connectedUser = userInfo;
+          if (userInfo) this.router.navigate(['/home']);
+        },
+        error: error => {
+          console.log("error", error)
+          alert("User already exists. Please login.");
+        }
+      });
   }
-
 }
