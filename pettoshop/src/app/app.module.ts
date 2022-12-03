@@ -1,7 +1,8 @@
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
+import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
@@ -12,7 +13,13 @@ import { ItemsComponent } from './items/items.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { ItemComponent } from './item/item.component';
-import { ItemDetailsComponent } from './item-details/item-details.component'
+import { ItemDetailsComponent } from './item-details/item-details.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { NgIf } from '@angular/common';
+import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
+import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -24,16 +31,24 @@ import { ItemDetailsComponent } from './item-details/item-details.component'
     CartComponent,
     ItemsComponent,
     ItemComponent,
-    ItemDetailsComponent
+    ItemDetailsComponent,
+    RegisterComponent
   ],
   imports: [
+    RouterModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    CommonModule
+    CommonModule,
+    NgbModule,
+    MDBBootstrapModule,
+    NgbCarouselModule,
+    NgIf
+
   ],
+  schemas: [NO_ERRORS_SCHEMA],
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -1,0 +1,20 @@
+.navbar-brand {
+    color:white !important;
+    font-weight: 600;
+    font-size: 28px;
+}
+
+.nav-link {
+    font-size: 16px;
+    color: white !important;
+    transition: 0.5s;
+}
+
+.active {
+    color:black !important;
+}
+
+.nav-link:hover {
+    color:black !important;
+    transition: 0.5s;
+}
