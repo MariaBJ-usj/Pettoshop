@@ -10,6 +10,12 @@ const ItemSchema = new mongoose.Schema({
   price: {
     type: Number
   },
+  image: {
+    type: String
+  },
+  category: {
+    type: String
+  },
 });
 
 const Item = mongoose.model("Item", ItemSchema);
