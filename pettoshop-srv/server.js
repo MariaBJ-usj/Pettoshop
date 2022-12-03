@@ -15,12 +15,23 @@ app.use(bodyParser.urlencoded({
 app.use(cors({credentials: true, origin: 'http://localhost:4200'}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(session({
-  secret: 'mypetshop',
-  resave: false,
-  saveUninitialized: true,
-  cookie: { secure: true }
-}));
+
+// app.use(session({
+//   secret: 'mypetshop',
+//   resave: false,
+//   saveUninitialized: true,
+//   cookie: { secure: true }
+// }));
+
+
+// ----- testttt success
+app.use(session({secret: "mysecret", 
+resave: true, 
+saveUninitialized: true}));
+
+//-------
+
+
 
 const username = "MariaBJ";
 const password = "CEwXvddqMZUZ5rh";
@@ -42,3 +53,4 @@ app.use(Router);
 app.listen(3000, () => {
   console.log("Server is running at port 3000");
 });
+
