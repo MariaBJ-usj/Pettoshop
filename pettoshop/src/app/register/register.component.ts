@@ -59,7 +59,7 @@ export class RegisterComponent implements OnInit {
       ({
         next: userInfo => {
           alert("Im here");
-          this.authService.connectedUser = userInfo;
+          this.authService.connecteduser = userInfo;
           if (userInfo) this.router.navigate(['/home']);
         },
         error: error => {

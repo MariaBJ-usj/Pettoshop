@@ -23,17 +23,39 @@ app.post("/login", async (request, response) => {
   User.findOne({
     email: request.body.email,
     password: request.body.password
+
   }, (err, user) => {
     if (err) return response.status(401).json({msg:"ERROR"});
-    if (!user) return response.status(401).json({msg:"WRONG LOGIN"});
-    //req.session.userId = user._id;
-    response.status(200).json({user});
-    // return response.send("you are loged in")
+    if (!user) {
+      
+      return response.status(401).json({msg:"WRONG LOGIN"});
+    } 
     
+    //req.session.userId = user._id;
+    request.session.user = user;
+    request.session.save();
+    console.log(user)
+
+    response.status(200).json({user});
+
   });
 
 });
 
+
+app.get("/islogged", (req, res)=> {
+  if(!req.session.user) {
+    return res.status(401).json();
+  }
+
+  User.findOne ( {user: req.session.user}, (error, user) => {
+    if(error) return res.status(401).json({msg: "Error"});
+    if(!user) return res.status(401).json({msg: "Error"});
+
+    req.session.user = user;
+    res.status(200).json({password: user.password})
+  })
+})
 
 
 app.post("/register", (req, res) => {

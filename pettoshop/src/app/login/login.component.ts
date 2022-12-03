@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
 
     this.authService.login(this.email, this.password).subscribe({
       next: userInfo => {
-        this.authService.connectedUser = userInfo;
+        this.authService.connecteduser = userInfo;
         if (userInfo) this.router.navigate(['/home']);
       },
       error: error => {

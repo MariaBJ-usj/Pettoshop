@@ -2,14 +2,34 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 
+ 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+ 
 
-  connectedUser:any = null;
+  connecteduser:any = null;
+  
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.isLogged();
+   }
+
+   isLogged() {
+    this.http.get("http://localhost:3000/islogged",{withCredentials: true}).subscribe(
+      (connecteduser)=> {
+        this.connecteduser = connecteduser;
+        console.log(this.connecteduser);
+        console.log("connected")
+      },
+      (error)=> {
+        console.log("not connected");
+      }
+      )
+    
+   }
+
 
   login(email: any, password: any):Observable<any>{
     return this.http.post("http://localhost:3000/login", {email:email, password:password}, {withCredentials: true});
