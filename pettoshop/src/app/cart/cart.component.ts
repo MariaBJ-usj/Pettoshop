@@ -13,6 +13,7 @@ import { Item } from '../models/item';
 export class CartComponent implements OnInit {
 
   orders:any;
+  toggleButton: boolean = true;
 
   constructor(public ordersService: OrdersService, private router: Router) {}
 
@@ -28,4 +29,13 @@ export class CartComponent implements OnInit {
       }
     )
   }
+
+toggle() {
+  if(this.toggleButton == true) {
+    this.toggleButton = false;
+  }
+  else {
+    this.toggleButton = true;
+  }
+}
 }
