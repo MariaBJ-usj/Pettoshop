@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EmailValidator } from '@angular/forms';
 import { faTachographDigital } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from '../auth.service'; 
-
+import { User } from '../models/user';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +12,13 @@ import { AuthService } from '../auth.service';
 })
 export class HomeComponent implements OnInit {
  
-  constructor(public auth: AuthService) { }
+  user:User = new User();
+
+  constructor(public auth: AuthService) {
+    auth.isLogged();
+    this.user = auth.connecteduser;
+    console.log(this.user);
+   }
 
   ngOnInit(): void {
     

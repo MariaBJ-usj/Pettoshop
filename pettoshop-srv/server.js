@@ -23,15 +23,12 @@ app.use(bodyParser.urlencoded({extended: true}));
 //   cookie: { secure: true }
 // }));
 
-
 // ----- testttt success
 app.use(session({secret: "mysecret", 
 resave: true, 
 saveUninitialized: true}));
 
 //-------
-
-
 
 const username = "MariaBJ";
 const password = "CEwXvddqMZUZ5rh";
