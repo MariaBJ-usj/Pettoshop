@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Order } from '../models/order';
+import { OrdersService } from "../orders.service";
+import { ItemsService } from "../items.service";
+import { Item } from '../models/item';
 
 @Component({
   selector: 'app-cart',
@@ -7,9 +12,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CartComponent implements OnInit {
 
-  constructor() { }
+  orders:any;
+
+  constructor(public ordersService: OrdersService, private router: Router) {}
 
   ngOnInit(): void {
   }
 
+  getOrders() {
+    this.ordersService.getOrders().subscribe(
+      (orders: Array<Order>) => {
+        this.orders = orders;
+      }
+    )
+  }
 }

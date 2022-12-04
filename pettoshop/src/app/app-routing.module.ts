@@ -7,6 +7,7 @@ import { RegisterComponent } from './register/register.component';
 import { HttpClientModule} from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ItemDetailsComponent } from './item-details/item-details.component';
+import {CartComponent } from './cart/cart.component';
 
 
 const routes: Routes = [
@@ -16,7 +17,8 @@ const routes: Routes = [
   {path:'register', component:RegisterComponent},
   {path:'items', component:ItemsComponent},
   {path:'item_details', component:ItemDetailsComponent},
-  {path:'item_details/:item', component:ItemDetailsComponent}
+  {path:'item_details/:item', component:ItemDetailsComponent},
+  {path:'cart', component:CartComponent}
 ];
 
 @NgModule({
