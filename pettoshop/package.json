@@ -30,6 +30,7 @@
     "bootstrap-icons": "^1.10.2",
     "font-awesome": "^4.7.0",
     "jquery": "^3.6.1",
+    "ng2-order-pipe": "^0.1.5",
     "ngx-filter-pipe": "^2.1.2",
     "ngx-order-pipe": "^2.2.0",
     "popper.js": "^1.16.1",

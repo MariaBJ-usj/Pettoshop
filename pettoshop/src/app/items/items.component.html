@@ -1,15 +1,19 @@
 <div class="container px-4 px-lg-5 mt-5">
   <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
     <div class="col-sm-5">
-      <select class="form-select " aria-label="Default select example">
+      <select class="form-select" (change)="sort('price')" aria-label="Default select example">
           <option selected>Tri par ordre alphabetique</option>
-          <option value="1">Croissant</option>
-          <option value="2">Décroissant</option>
+          <option value="croissant">Croissant</option>
+          <option value="-décroissant">Décroissant</option>
         </select>
+        <br/>
+        <input class="form-control me-2" type="text" [(ngModel)] = "searchInput.name" placeholder="Search">
         </div>
-    <div class="col mb-5" *ngFor="let item of items">
+        
+        
+    <div class="col mb-5" *ngFor="let item of items | orderBy: orderHeader: isDescOrder | filterBy: searchInput">
       <form (ngSubmit)="itemDetails(item)">
-        <div class="card h-100">
+        <div class="card h-100" >
           <!-- Product image-->
           <img class="card-img-top" src="../../assets/images/product1.jpg" alt="..." />
           <!-- Product details--> 

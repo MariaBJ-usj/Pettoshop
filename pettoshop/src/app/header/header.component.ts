@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { User } from '../models/user';
 
@@ -13,7 +14,7 @@ export class HeaderComponent implements OnInit {
   displayLog:string = "display";
   displayCart:string = "hide";
 
-  constructor(public auth: AuthService) {
+  constructor(public auth: AuthService, private router: Router) {
     auth.isLogged();
     if (!auth.connecteduser) {
       this.displayLog = "display";
@@ -26,6 +27,13 @@ export class HeaderComponent implements OnInit {
     
     console.log(this.user);
   }
+
+  logoutUser() {
+    this.auth.logout();
+    this.router.navigate(['/login'])
+  }
+
+  
 
   ngOnInit(): void {
   }

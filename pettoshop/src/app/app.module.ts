@@ -20,6 +20,8 @@ import { NgIf } from '@angular/common';
 import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { RegisterComponent } from './register/register.component';
+import { OrderModule } from 'ngx-order-pipe';
+import { FilterPipeModule } from 'ngx-filter-pipe';
 
 @NgModule({
   declarations: [
@@ -45,8 +47,10 @@ import { RegisterComponent } from './register/register.component';
     NgbModule,
     MDBBootstrapModule,
     NgbCarouselModule,
-    NgIf
-
+    NgIf,
+    OrderModule,
+    FilterPipeModule
+  
   ],
   schemas: [NO_ERRORS_SCHEMA],
   providers: [],
