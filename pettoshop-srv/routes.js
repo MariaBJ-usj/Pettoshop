@@ -35,8 +35,7 @@ app.post("/login", async (request, response) => {
     request.session.user = user;
     request.session.save();
     console.log(user)
-
-    response.status(200).json({user});
+    response.status(200).json(user);
 
   });
 
@@ -46,17 +45,16 @@ app.post("/login", async (request, response) => {
 app.get("/islogged", (req, res)=> {
   if(!req.session.user) {
     return res.status(401).json();
-  }
+  };
 
-  User.findOne ( {user: req.session.user}, (error, user) => {
-    if(error) return res.status(401).json({msg: "Error"});
-    if(!user) return res.status(401).json({msg: "Error"});
+  // User.findOne ( {user: req.session.user}, (error, user) => {
+  //   if(error) return res.status(401).json({msg: "Error"});
+  //   if(!user) return res.status(401).json({msg: "Error"});
 
-    req.session.user = user;
-    res.status(200).json({firstname: user.firstname})
-  })
+  //   req.session.user = user;
+  //   res.status(200).json({user})
+  // })
 })
-
 
 app.post("/register", (req, res) => {
    

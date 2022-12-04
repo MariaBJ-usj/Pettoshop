@@ -1,4 +1,5 @@
-<div class="container mt-5 mb-5">
+<app-header></app-header>
+<!-- <div class="container mt-5 mb-5">
     <div class="row d-flex justify-content-center">
         <div class="col-md-10">
             <div class="card">
@@ -29,4 +30,83 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
+
+
+<section class="h-100 gradient-custom">
+  <div class="container py-5">
+    <h3>cccc{{user.firstname}}</h3>
+    <div class="row d-flex justify-content-center my-4">
+      <div class="col-md-8">
+        <div class="card mb-4">
+          <div class="card-header py-3">
+            <h5 class="mb-0">{{category}}</h5>
+            <div class="col-sm-5">
+            <select class="form-select " aria-label="Default select example">
+                <option selected>Open this select menu</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
+              </div>
+          </div>
+          <div class="card-body">
+            <!-- Single item -->
+            <div class="row">
+              <div class="col-lg-3 col-md-12 mb-4 mb-lg-0">
+                <!-- Image -->
+                <div class="bg-image hover-overlay hover-zoom ripple rounded" data-mdb-ripple-color="light">
+                  <img src="../../assets/images/product1.jpg" class="w-100"
+                    alt="Blue Jeans Jacket" />
+                  <a href="#!">
+                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.2)"></div>
+                  </a>
+                </div>
+                <!-- Image -->
+              </div>
+
+              <div class="col-lg-5 col-md-6 mb-4 mb-lg-0">
+                <!-- Data -->
+                <p><strong>{{name}}</strong></p>
+                <p>{{description}}</p>
+                <div class="col-xs-2">
+                <button type="button" class="btn btn-block mr-1 btn-danger">Remove item</button> <span></span>
+                <button type="button" class="btn btn-block btn-success">Add to cart</button>
+                </div>
+                <!-- Data -->
+              </div>
+
+              <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+                <!-- Quantity -->
+                <div class="d-flex mb-4" style="max-width: 300px">
+                  
+
+                  <div class="form-outline">
+                    <input id="form1" min="0" name="quantity" value="1" type="number" class="form-control" />
+                    <label class="form-label text-center" for="form1">Quantity</label>
+                  </div>
+
+                
+                </div>
+                <!-- Quantity -->
+
+                <!-- Price -->
+                <p class="text-start text-md-center">
+                  <strong>Price: €{{price}}</strong>
+                </p>
+                <!-- Price -->
+              </div>
+            </div>
+            <!-- Single item -->
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+
+<app-footer></app-footer>

@@ -7,26 +7,24 @@ import { Observable } from "rxjs";
   providedIn: 'root'
 })
 export class AuthService {
- 
 
-  connecteduser:any = null;
+  connecteduser:any;
   
-
   constructor(private http: HttpClient) {
-    this.isLogged();
+    
    }
 
    isLogged() {
-    this.http.get("http://localhost:3000/islogged",{withCredentials: true}).subscribe(
-      (connecteduser)=> {
+    this.http.get("http://localhost:3000/islogged",{withCredentials: true}).subscribe({
+      next: connecteduser=> {
         this.connecteduser = connecteduser;
         console.log(this.connecteduser);
         console.log("connected")
       },
-      (error)=> {
-        console.log("not connected");
+      error: error=> {
+        console.log("not connected:" + error);
       }
-      )
+    })
     
    }
 
