@@ -19,4 +19,14 @@ export class OrdersService {
     return this.http.post("http://localhost:3000/orders", {user_id: this.authService.connecteduser._id});
   }
 
+  addOrder(item_id:any, quantity:any):Observable<any>{
+    return this.http.post("http://localhost:3000/addorder", 
+    {user_id: this.authService.connecteduser._id, item_id:item_id, quantity:quantity});
+  }
+
+  updateOrder(_id:any):Observable<any>{
+    return this.http.post("http://localhost:3000/updateorder", 
+    {_id: _id});
+  }
+
 }

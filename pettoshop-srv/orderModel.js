@@ -1,10 +1,9 @@
 const mongoose = require("mongoose");
-const Item = require("./itemModel");
 
 const OrderSchema = new mongoose.Schema({
-  item_id: [{
+  item_id: {
     type: mongoose.Schema.Types.ObjectId
-  }],
+  },
   user_id: {
     type: mongoose.Schema.Types.ObjectId
   },

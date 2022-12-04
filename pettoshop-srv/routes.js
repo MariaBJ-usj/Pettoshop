@@ -37,13 +37,10 @@ app.post("/login", async (request, response) => {
         msg: "WRONG LOGIN"
       });
     }
-
-    //req.session.userId = user._id;
     request.session.user = user;
     request.session.save();
     console.log(user)
     response.status(200).json(user);
-
   });
 
 });
@@ -85,10 +82,10 @@ app.post("/register", (req, res) => {
     } else {
       newUser.save((error, user) => {
         if (error) return console.error(err);
-        //req.session.userId = user._id;
-        res.status(200).json({
-          email: user.email
-        })
+        request.session.user = user;
+        request.session.save();
+        console.log(user)
+        response.status(200).json(user);
       })
     }
   })
@@ -139,8 +136,7 @@ app.get("/orders", async (request, response) => {
 app.post("/orders", async (request, response) => {
 
   Order
-    .aggregate([
-      {
+    .aggregate([{
         $match: {
           user_id: ObjectId(request.body.user_id)
         }
@@ -166,6 +162,77 @@ app.post("/orders", async (request, response) => {
       response.status(200).json(orders);
     });
 
+});
+
+app.post("/addorder", async (req, res) => {
+
+  const newOrder = new Order({
+    user_id: req.body.user_id,
+    item_id: req.body.item_id,
+    quantity: req.body.quantity
+  });
+
+  Order.countDocuments({
+    user_id: req.body.user_id,
+    item_id: req.body.item_id
+  }, function (err, count) {
+    if (err) {
+      return res.status(401).json({
+        msg: "ERROR"
+      });
+    }
+    if (count > 0) {
+      Order.findOneAndUpdate({
+          user_id: req.body.user_id,
+          item_id: req.body.item_id
+        }, 
+        {
+          quantity: req.body.quantity
+        },
+        (err, order) => {
+          if (err) {
+            return res.status(400).json({
+              error: "CANNOT UPDATE ORDER"
+            });
+          }
+          res.status(200).json("ORDER UPDATED")
+        })
+    } else {
+      newOrder.save((error, user) => {
+        if (error) return console.error(err);
+        res.status(200).json("ORDER ADDED")
+      })
+    }
+  })
+});
+
+app.post("/updateorder", async (req, res) => {
+
+  Order.countDocuments({
+    _id: req.body._id
+  }, function (err, count) {
+    if (err) {
+      return res.status(401).json({
+        msg: "ERROR"
+      });
+    }
+    if (count > 0) {
+      Order.findOneAndUpdate({
+        _id: req.body._id
+        }, 
+        {
+          quantity: req.body.quantity
+        },
+        (err, order) => {
+          if (err) {
+            return res.status(400).json({
+              error: "CANNOT UPDATE ORDER"
+            });
+          }
+          res.status(200).json("ORDER UPDATED")
+        })
+    };
+  })
 });
 
 module.exports = app;

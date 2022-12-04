@@ -17,12 +17,14 @@ export class CartComponent implements OnInit {
   constructor(public ordersService: OrdersService, private router: Router) {}
 
   ngOnInit(): void {
+    this.getOrders();
   }
 
   getOrders() {
     this.ordersService.getOrders().subscribe(
       (orders: Array<Order>) => {
         this.orders = orders;
+        console.log(this.orders);
       }
     )
   }
