@@ -56,6 +56,15 @@ app.get("/islogged", (req, res)=> {
   // })
 })
 
+
+app.get("/logout", (req, res)=> {
+  req.session.destroy(error=> {
+    if(error) return res.status(409).json({msg: "logout error"});
+    res.status(200).json({msg:"logout ok"});
+
+  })
+})
+
 app.post("/register", (req, res) => {
    
   console.log("here")
