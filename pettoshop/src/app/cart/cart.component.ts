@@ -46,8 +46,7 @@ export class CartComponent implements OnInit {
         alert("Order edited");
         alert(orderInfo);
         if (orderInfo){
-          //this.router.navigate(['/cart']);
-          location.reload();
+          this.router.navigate(['/home']);
         } 
       },
       error: error => {

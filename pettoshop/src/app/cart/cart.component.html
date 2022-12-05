@@ -33,11 +33,11 @@
                           <div class="ms-3">
                             <br />
                             <p>Quantity: {{ order.quantity }}</p>
-                            <input class="form-control" type="number" [disabled]="!order.disabled" formControlName="quantity" min="1">
+                            <input class="form-control" type="number" [disabled]="order.disabled" formControlName="quantity" min="1">
                             <br />
-                            <button type="button" class="btn btn-primary" style="margin-bottom: 10px; margin-right:10px"
-                              (click)="order.disabled=!order.disabled">Edit</button>
-                            <button type="submit" class="btn btn-warning" style="margin-bottom: 10px;" [disabled]="!order.disabled">Update Changes</button>
+                            <!-- <button type="button" class="btn btn-primary" style="margin-bottom: 10px; margin-right:10px"
+                              (click)="order.disabled=!order.disabled">Edit</button> -->
+                            <button type="submit" class="btn btn-warning" style="margin-bottom: 10px;" [disabled]="order.disabled">Update Changes</button>
                             <button type="button" class="btn btn-danger" style="margin-bottom: 10px">Delete</button>
                           </div>
                         </div>

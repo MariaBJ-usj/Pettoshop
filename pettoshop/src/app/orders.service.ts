@@ -25,7 +25,6 @@ export class OrdersService {
   }
 
   updateOrder(id:any, quantity:any):Observable<any>{
-    alert(id);
     return this.http.put("http://localhost:3000/updateorder", 
     {_id: id, quantity: quantity});
   }

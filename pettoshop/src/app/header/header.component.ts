@@ -24,8 +24,6 @@ export class HeaderComponent implements OnInit {
       this.displayCart = "display";
       this.displayLog = "hide";
     }
-    
-    console.log(this.user);
   }
 
   logoutUser() {

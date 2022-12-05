@@ -17,12 +17,9 @@ export class HomeComponent implements OnInit {
   constructor(public auth: AuthService) {
     auth.isLogged();
     this.user = auth.connecteduser;
-    console.log(this.user);
   }
 
   ngOnInit(): void {
-
-
   }
 
 }

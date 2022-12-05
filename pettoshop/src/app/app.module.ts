@@ -22,6 +22,7 @@ import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { RegisterComponent } from './register/register.component';
 import { OrderModule } from 'ngx-order-pipe';
 import { FilterPipeModule } from 'ngx-filter-pipe';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,7 @@ import { FilterPipeModule } from 'ngx-filter-pipe';
   
   ],
   schemas: [NO_ERRORS_SCHEMA],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

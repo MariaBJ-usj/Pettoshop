@@ -238,7 +238,7 @@ app.put("/updateorder", async (req, res) => {
               error: "CANNOT UPDATE ORDER"
             });
           }
-          res.status(200).json(order)
+          res.status(200).json("ORDER UPDATED")
         })
     };
   })

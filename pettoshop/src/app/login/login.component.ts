@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit {
   password: string = "";
   formData: FormGroup;
 
-  constructor(public authService: AuthService, private router: Router, fb: FormBuilder) {
+  constructor(private cookieService: CookieService,public authService: AuthService, private router: Router, fb: FormBuilder) {
     this.formData = fb.group({
       title: fb.control('initial value', Validators.required)
     });

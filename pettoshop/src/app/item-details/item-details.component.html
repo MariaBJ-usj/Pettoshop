@@ -1,104 +1,71 @@
 <app-header></app-header>
-<!-- <div class="container mt-5 mb-5">
-    <div class="row d-flex justify-content-center">
-        <div class="col-md-10">
-            <div class="card">
-                <div class="row" >
-                    <div class="col-md-6">
-                        <div class="images p-3">
-                            <div class="text-center p-4"> <img id="main-image" src="../../assets/images/product1.jpg" width="250" /> </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="product p-4">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="d-flex align-items-center"> <i class="fa fa-long-arrow-left"></i> <span class="ml-1">Back</span> </div> <i class="fa fa-shopping-cart text-muted"></i>
-                            </div>
-                            <div class="mt-4 mb-3"> <span class="text-uppercase text-muted brand">{{category}}</span>
-                                <h5 class="text-uppercase">{{name}}</h5>
-                                    <div class="ml-2"> <small class="dis-price">{{price}}</small> 
-                                </div>
-                            </div>
-                            <p class="about">{{description}}</p>
-                            <div class="sizes mt-5">
-                                <h6 class="text-uppercase">Size</h6> <label class="radio"> <input type="radio" name="size" value="S" checked> <span>S</span> </label> <label class="radio"> <input type="radio" name="size" value="M"> <span>M</span> </label> <label class="radio"> <input type="radio" name="size" value="L"> <span>L</span> </label> <label class="radio"> <input type="radio" name="size" value="XL"> <span>XL</span> </label> <label class="radio"> <input type="radio" name="size" value="XXL"> <span>XXL</span> </label>
-                            </div>
-                            <div class="cart mt-4 align-items-center"> <button class="btn btn-danger text-uppercase mr-2 px-4">Add to cart</button> <i class="fa fa-heart text-muted"></i> <i class="fa fa-share-alt text-muted"></i> </div>
-                        </div>
-                    </div>
-                </div>
+<form [formGroup]="formData" (ngSubmit)="createOrder(formData.value)">
+  <section class="h-100 gradient-custom">
+    <div class="container py-5">
+      <!-- <h3>cccc{{ user.firstname }}</h3> -->
+      <div class="row d-flex justify-content-center my-4">
+        <div class="col-md-8">
+          <div class="card mb-4">
+            <div class="card-header py-3">
+              <h5 class="mb-0">{{ category }}</h5>
+
             </div>
-        </div>
-    </div>
-</div> -->
-
-
-<section class="h-100 gradient-custom">
-  <div class="container py-5">
-    <!-- <h3>cccc{{user.firstname}}</h3> -->
-    <div class="row d-flex justify-content-center my-4">
-      <div class="col-md-8">
-        <div class="card mb-4">
-          <div class="card-header py-3">
-            <h5 class="mb-0">{{category}}</h5>
-            
-          </div>
-          <div class="card-body">
-            <!-- Single item -->
-            <div class="row">
-              <div class="col-lg-3 col-md-12 mb-4 mb-lg-0">
-                <!-- Image -->
-                <div class="bg-image hover-overlay hover-zoom ripple rounded" data-mdb-ripple-color="light">
-                  <img src="{{image}}" class="w-100"/>
-                  <a href="#!">
-                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.2)"></div>
-                  </a>
-                </div>
-                <!-- Image -->
-              </div>
-
-              <div class="col-lg-5 col-md-6 mb-4 mb-lg-0">
-                <!-- Data -->
-                <p><strong>{{name}}</strong></p>
-                <p>{{description}}</p>
-                <div class="col-xs-2">
-                <!-- <button type="button" class="btn btn-block mr-1 btn-danger">Remove item</button> <span></span> -->
-                <button type="button" class="btn btn-block btn-success">Add to cart</button>
-                </div>
-                <!-- Data -->
-              </div>
-
-              <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
-                <!-- Quantity -->
-                <div class="d-flex mb-4" style="max-width: 300px">
-                  
-
-                  <div class="form-outline">
-                    <input id="form1" min="0" name="quantity" value="1" type="number" class="form-control" />
-                    <label class="form-label text-center" for="form1">Quantity</label>
+            <div class="card-body">
+              <!-- Single item -->
+              <div class="row">
+                <div class="col-lg-3 col-md-12 mb-4 mb-lg-0">
+                  <!-- Image -->
+                  <div class="bg-image hover-overlay hover-zoom ripple rounded" data-mdb-ripple-color="light">
+                    <img src="{{ image }}" class="w-100" />
+                    <a href="#!">
+                      <div class="mask" style="background-color: rgba(251, 251, 251, 0.2)"></div>
+                    </a>
                   </div>
-
-                
+                  <!-- Image -->
                 </div>
-                <!-- Quantity -->
 
-                <!-- Price -->
-                <p class="text-start text-md-center">
-                  <strong>Price: €{{price}}</strong>
-                </p>
-                <!-- Price -->
+                <div class="col-lg-5 col-md-6 mb-4 mb-lg-0">
+                  <!-- Data -->
+                  <p><strong>{{ name }}</strong></p>
+                  <p>{{ description }}</p>
+                  <div class="col-xs-2">
+                    <!-- <button type="button" class="btn btn-block mr-1 btn-danger">Remove item</button> <span></span> -->
+                    <button type="submit" class="btn btn-block btn-success">Add to cart</button>
+                  </div>
+                  <!-- Data -->
+                </div>
+
+                <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+                  <!-- Quantity -->
+                  <div class="d-flex mb-4" style="max-width: 300px">
+
+
+                    <div class="form-outline">
+                      <input id="form1" min="1" name="quantity" value="1" type="number" class="form-control" formControlName="quantity"/>
+                      <label class="form-label text-center" for="form1">Quantity</label>
+                    </div>
+
+
+                  </div>
+                  <!-- Quantity -->
+
+                  <!-- Price -->
+                  <p class="text-start text-md-center">
+                    <strong>Price: €{{ price }}</strong>
+                  </p>
+                  <!-- Price -->
+                </div>
               </div>
-            </div>
-            <!-- Single item -->
+              <!-- Single item -->
 
-            
+
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-</section>
-
+  </section>
+</form>
 
 <app-footer></app-footer>

@@ -24,9 +24,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 // }));
 
 // ----- testttt success
-app.use(session({secret: "mysecret", 
-resave: true, 
-saveUninitialized: true}));
+app.use(session({secret: "mysecret", resave: true, saveUninitialized: true}));
 
 //-------
 
