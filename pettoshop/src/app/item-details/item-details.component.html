@@ -35,20 +35,13 @@
 
 <section class="h-100 gradient-custom">
   <div class="container py-5">
-    <h3>cccc{{user.firstname}}</h3>
+    <!-- <h3>cccc{{user.firstname}}</h3> -->
     <div class="row d-flex justify-content-center my-4">
       <div class="col-md-8">
         <div class="card mb-4">
           <div class="card-header py-3">
             <h5 class="mb-0">{{category}}</h5>
-            <div class="col-sm-5">
-            <select class="form-select " aria-label="Default select example">
-                <option selected>Open this select menu</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-              </select>
-              </div>
+            
           </div>
           <div class="card-body">
             <!-- Single item -->
@@ -56,8 +49,7 @@
               <div class="col-lg-3 col-md-12 mb-4 mb-lg-0">
                 <!-- Image -->
                 <div class="bg-image hover-overlay hover-zoom ripple rounded" data-mdb-ripple-color="light">
-                  <img src="../../assets/images/product1.jpg" class="w-100"
-                    alt="Blue Jeans Jacket" />
+                  <img src="{{image}}" class="w-100"/>
                   <a href="#!">
                     <div class="mask" style="background-color: rgba(251, 251, 251, 0.2)"></div>
                   </a>
@@ -70,7 +62,7 @@
                 <p><strong>{{name}}</strong></p>
                 <p>{{description}}</p>
                 <div class="col-xs-2">
-                <button type="button" class="btn btn-block mr-1 btn-danger">Remove item</button> <span></span>
+                <!-- <button type="button" class="btn btn-block mr-1 btn-danger">Remove item</button> <span></span> -->
                 <button type="button" class="btn btn-block btn-success">Add to cart</button>
                 </div>
                 <!-- Data -->
