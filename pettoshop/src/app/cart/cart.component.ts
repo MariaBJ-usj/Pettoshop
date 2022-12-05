@@ -15,6 +15,7 @@ export class CartComponent implements OnInit {
   quantity: number = 0;
   id: string = "";
   formData: FormGroup;
+  total:number = 0;
 
   constructor(public ordersService: OrdersService, private router: Router, fb: FormBuilder) {
     this.formData = fb.group({
@@ -33,7 +34,9 @@ export class CartComponent implements OnInit {
     this.ordersService.getOrders().subscribe(
       (orders: Array<Order>) => {
         this.orders = orders;
-        console.log(this.orders);
+        for (let index = 0; index < this.orders.length; index++) {
+          this.total = this.total + (orders[index].quantity * Number(orders[index].order_item[0].price));
+        }
       }
     )
   }
@@ -44,7 +47,6 @@ export class CartComponent implements OnInit {
     this.ordersService.updateOrder(this.id, this.quantity).subscribe({
       next: orderInfo => {
         alert("Order edited");
-        alert(orderInfo);
         if (orderInfo){
           this.router.navigate(['/home']);
         } 
@@ -56,12 +58,19 @@ export class CartComponent implements OnInit {
     })
   } 
 
-// toggle(order:any) {
-//   if(order.disabled == true) {
-//     order.disabled = false;
-//   }
-//   else {
-//     order.disabled = true;
-//   }
-// }
+  deleteOrder(id:any){
+    this.id = id;
+    this.ordersService.deleteOrder(this.id).subscribe({
+      next: orderInfo => {
+        alert("Order deleted");
+        if (orderInfo){
+          this.router.navigate(['/home']);
+        } 
+      },
+      error: error => {
+        console.log("error", error)
+        alert("Order could not be deleted");
+      }
+    })
+  }
 }

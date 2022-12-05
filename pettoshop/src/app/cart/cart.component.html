@@ -20,25 +20,28 @@
                   </div>
                 </div>
                 <!-- ssssssssss -->
-                
-                <div class="card mb-3" *ngFor="let order of orders" >
+
+                <div class="card mb-3" *ngFor="let order of orders">
                   <form [formGroup]="formData" (ngSubmit)="editOrder(formData.value, order._id)">
                     <div class="card-body">
                       <div class="d-flex justify-content-between">
                         <div class="d-flex flex-row align-items-center">
                           <div>
-                            <img class="card-img-top" src="{{order.order_item[0].image}}" alt="..."
+                            <img class="card-img-top" src="{{ order.order_item[0].image }}" alt="..."
                               class="img-fluid rounded-3" alt="Shopping item" style="width: 65px;">
                           </div>
                           <div class="ms-3">
                             <br />
-                            <p>Quantity: {{ order.quantity }}</p>
-                            <input class="form-control" type="number" [disabled]="order.disabled" formControlName="quantity" min="1">
+                            <p>Quantity: {{ order.quantity }}  x  {{order.order_item[0].price}}$</p>
+                            <input class="form-control" type="number" [disabled]="order.disabled"
+                              formControlName="quantity" min="1">
                             <br />
                             <!-- <button type="button" class="btn btn-primary" style="margin-bottom: 10px; margin-right:10px"
                               (click)="order.disabled=!order.disabled">Edit</button> -->
-                            <button type="submit" class="btn btn-warning" style="margin-bottom: 10px;" [disabled]="order.disabled">Update Changes</button>
-                            <button type="button" class="btn btn-danger" style="margin-bottom: 10px">Delete</button>
+                            <button type="submit" class="btn btn-warning" style="margin-bottom: 10px; margin-right:10px"
+                              [disabled]="order.disabled">Update Changes</button>
+                            <button type="button" class="btn btn-danger" style="margin-bottom: 10px"
+                              (click)="deleteOrder(order._id)">Delete</button>
                           </div>
                         </div>
                         <div class="d-flex flex-row align-items-center">
@@ -50,8 +53,9 @@
                         </div>
                       </div>
                     </div>
-                   </form></div>
-               
+                  </form>
+                </div>
+
               </div>
               <div class="col-lg-5">
 
@@ -96,21 +100,10 @@
 
                     <hr class="my-4">
 
-                    <div class="d-flex justify-content-between">
-                      <p class="mb-2">Subtotal</p>
-                      <p class="mb-2">$4798.00</p>
-                    </div>
-
-                    <div class="d-flex justify-content-between">
-                      <p class="mb-2">Shipping</p>
-                      <p class="mb-2">$20.00</p>
-                    </div>
-
                     <div class="d-flex justify-content-between mb-4">
                       <p class="mb-2">Total(Incl. taxes)</p>
-                      <p class="mb-2">$4818.00</p>
+                      <p class="mb-2">{{total}}$</p>
                     </div>
-                    <span style="font-size: 22px; margin-right: 20px;">$4818.00</span>
 
                     <div class="text-right">
                       <button type="button" class="btn btn-success btn-block btn-lg" style="background-color: #337c36;">

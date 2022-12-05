@@ -29,4 +29,8 @@ export class OrdersService {
     {_id: id, quantity: quantity});
   }
 
+  deleteOrder(id:any):Observable<any>{
+    return this.http.delete("http://localhost:3000/deleteorder/"+id);
+  }
+
 }

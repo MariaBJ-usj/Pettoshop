@@ -5,5 +5,5 @@ export class Order {
     item_id?: number | string;
     user_id?: number | string;
     quantity: number = 0;
-    order_item: Item = new Item;
+    order_item: Array<Item> = new Array;
 }

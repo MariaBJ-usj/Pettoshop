@@ -130,14 +130,13 @@ app.get("/orders", async (request, response) => {
     $lookup: {
       from: "items",
       localField: "item_id",
-      foreignField: "_id",
-      as: "order_item",
+      foreignField: "_id"
     }
   }]).exec((error, orders) => {
     if (error) {
       return console.error(err);
     };
-    response.json(orders);
+    response.status(200).json(orders);
   });
 
 });
@@ -241,6 +240,20 @@ app.put("/updateorder", async (req, res) => {
           res.status(200).json("ORDER UPDATED")
         })
     };
+  })
+});
+
+app.delete("/deleteorder/:id", async (req, res) => {
+
+  Order.deleteOne({
+    _id: req.params.id
+  }, function (err, order) {
+    if (err) {
+      return res.status(400).json({
+        error: "CANNOT DELETE ORDER"
+      });
+    }
+    res.status(200).json("ORDER DELETED")
   })
 });
 
