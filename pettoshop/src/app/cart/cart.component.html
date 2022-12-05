@@ -1,31 +1,3 @@
-<!-- <div class="container px-4 px-lg-5 mt-5">
-  <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-    <div class="col mb-5" *ngFor="let order of orders">
-      <form > -->
-<!-- <div class="card h-100"> -->
-<!-- Product image-->
-<!-- <img class="card-img-top" src="../../assets/images/product1.jpg" alt="..." /> -->
-<!-- Product details-->
-<!-- <div class="card-body p-4">
-            <div class="text-center"> -->
-<!-- Product name-->
-<!-- <h5 class="fw-bolder">{{ order.order_item[0].name }}</h5> -->
-<!-- Product price-->
-<!-- {{ order.quantity }}
-            </div>
-          </div> -->
-<!-- Product actions-->
-<!-- <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-            <div class="text-center">
-              <input class="btn btn-outline-dark mt-auto" type="submit" value="Edit">
-            </div>
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>
-</div> -->
-
 <app-header></app-header>
 
 <section class="h-100 h-custom">
@@ -38,45 +10,48 @@
             <div class="row">
 
               <div class="col-lg-7">
-                <h5 class="mb-3"><a href="#!" class="text-body"><i class="me-2"></i>Continue shopping</a></h5>
+                <h5 class="mb-3"><a routerLink="/home" class="text-body"><i class="me-2"></i>Continue shopping</a></h5>
                 <hr>
 
                 <div class="d-flex justify-content-between align-items-center mb-4">
                   <div>
                     <p class="mb-1">Shopping cart</p>
-                    <button type="button" class="btn btn-primary" style="margin-bottom: 10px; margin-right:10px" (click)="toggle()" >Edit</button>
-                    <button type="button" class="btn btn-warning" style="margin-bottom: 10px;" [disabled]='toggleButton'>Update Changes</button>
+
                   </div>
                 </div>
                 <!-- ssssssssss -->
-                <div class="card mb-3"*ngFor="let order of orders">
-                  <div class="card-body">
-                    <div class="d-flex justify-content-between">
-                      <div class="d-flex flex-row align-items-center">
-                        <div>
-                          <img class="card-img-top" src="../../assets/images/product1.jpg" alt="..."
-                            class="img-fluid rounded-3" alt="Shopping item" style="width: 65px;">
+                
+                <div class="card mb-3" *ngFor="let order of orders" >
+                  <form [formGroup]="formData" (ngSubmit)="editOrder(formData.value, order._id)">
+                    <div class="card-body">
+                      <div class="d-flex justify-content-between">
+                        <div class="d-flex flex-row align-items-center">
+                          <div>
+                            <img class="card-img-top" src="../../assets/images/product1.jpg" alt="..."
+                              class="img-fluid rounded-3" alt="Shopping item" style="width: 65px;">
+                          </div>
+                          <div class="ms-3">
+                            <br />
+                            <p>Quantity: {{ order.quantity }}</p>
+                            <input class="form-control" type="number" [disabled]="!order.disabled" formControlName="quantity" min="1">
+                            <br />
+                            <button type="button" class="btn btn-primary" style="margin-bottom: 10px; margin-right:10px"
+                              (click)="order.disabled=!order.disabled">Edit</button>
+                            <button type="submit" class="btn btn-warning" style="margin-bottom: 10px;" [disabled]="!order.disabled">Update Changes</button>
+                            <button type="button" class="btn btn-danger" style="margin-bottom: 10px">Delete</button>
+                          </div>
                         </div>
-                        <div class="ms-3">
-                          <!-- <h5>{{ order.order_item[0].name }}</h5> -->
-                          <br/>
-                          
-                          <input class="form-control" type="text" [disabled]='toggleButton' value="{{ order.quantity }}">
-                          <br/>
-                          <button type="button" class="btn btn-danger" style="margin-bottom: 10px">Delete</button>
-                        </div>
-                      </div>
-                      <div class="d-flex flex-row align-items-center">
-                        <div style="width: 50px;">
-                          <!-- <h5 class="fw-normal mb-0">2</h5> -->
-                        </div>
-                        <div style="width: 200px;">
-                          <h5 class="mb-0">{{ order.order_item[0].name }}</h5>
+                        <div class="d-flex flex-row align-items-center">
+                          <div style="width: 50px;">
+                          </div>
+                          <div style="width: 200px;">
+                            <h5 class="mb-0">{{ order.order_item[0].name }}</h5>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                </div>
+                   </form></div>
+               
               </div>
               <div class="col-lg-5">
 
@@ -84,7 +59,7 @@
                   <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center mb-4">
                       <h5 class="mb-0">Card details</h5>
-                    
+
                     </div>
 
                     <form class="mt-4">
@@ -105,7 +80,7 @@
                           <div class="form-outline form-white">
                             <input type="text" id="typeExp" class="form-control form-control-lg" placeholder="MM/YYYY"
                               size="7" id="exp" minlength="7" maxlength="7" />
-                            <label class="form-label" for="typeExp">Expiration</label>
+                            <label class="form-label" for="typeText">Expiration</label>
                           </div>
                         </div>
                         <div class="col-md-6">
@@ -135,16 +110,16 @@
                       <p class="mb-2">Total(Incl. taxes)</p>
                       <p class="mb-2">$4818.00</p>
                     </div>
-                        <span style="font-size: 22px; margin-right: 20px;">$4818.00</span>
-                    
-                        <div class="text-right">
-                          <button type="button" class="btn btn-success btn-block btn-lg" style="background-color: #337c36;">
-                      <div class="d-flex justify-content-between">
-                        <span>Checkout</span>
-                      </div>
-                    </button>
+                    <span style="font-size: 22px; margin-right: 20px;">$4818.00</span>
+
+                    <div class="text-right">
+                      <button type="button" class="btn btn-success btn-block btn-lg" style="background-color: #337c36;">
+                        <div class="d-flex justify-content-between">
+                          <span>Checkout</span>
                         </div>
-                        
+                      </button>
+                    </div>
+
                   </div>
                 </div>
 

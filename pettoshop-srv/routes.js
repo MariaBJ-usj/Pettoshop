@@ -204,7 +204,7 @@ app.post("/addorder", async (req, res) => {
               error: "CANNOT UPDATE ORDER"
             });
           }
-          res.status(200).json("ORDER UPDATED")
+          res.status(200).json(order)
         })
     } else {
       newOrder.save((error, user) => {
@@ -215,7 +215,7 @@ app.post("/addorder", async (req, res) => {
   })
 });
 
-app.post("/updateorder", async (req, res) => {
+app.put("/updateorder", async (req, res) => {
 
   Order.countDocuments({
     _id: req.body._id
@@ -238,7 +238,7 @@ app.post("/updateorder", async (req, res) => {
               error: "CANNOT UPDATE ORDER"
             });
           }
-          res.status(200).json("ORDER UPDATED")
+          res.status(200).json(order)
         })
     };
   })

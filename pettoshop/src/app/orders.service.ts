@@ -24,9 +24,10 @@ export class OrdersService {
     {user_id: this.authService.connecteduser._id, item_id:item_id, quantity:quantity});
   }
 
-  updateOrder(_id:any):Observable<any>{
-    return this.http.post("http://localhost:3000/updateorder", 
-    {_id: _id});
+  updateOrder(id:any, quantity:any):Observable<any>{
+    alert(id);
+    return this.http.put("http://localhost:3000/updateorder", 
+    {_id: id, quantity: quantity});
   }
 
 }
