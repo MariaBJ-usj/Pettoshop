@@ -14,7 +14,7 @@ export class ItemsComponent implements OnInit {
   items: any;
   orderHeader: String = '';
   isDescOrder: boolean = true;
-  searchInput: Item = {name: '', description: '', price: '', image: '', category: ''};
+  searchInput: Item = { name: '', description: '', price: '', image: '', category: '' };
 
   constructor(public itemsService: ItemsService, private router: Router) { }
 
@@ -26,22 +26,20 @@ export class ItemsComponent implements OnInit {
     this.itemsService.getItems().subscribe(
       (items: Array<Item>) => {
         this.items = items;
-        
+
       }
     )
   }
 
-
-
-itemDetails(item: Item) {
-    if (item) this.router.navigate(['/item_details/:'+ item.name], {state: {data: item}});
+  itemDetails(item: Item) {
+    if (item) this.router.navigate(['/item_details/:' + item.name], { state: { data: item } });
   }
 
 
-sort(headerName: String) {
-  this.isDescOrder = !this.isDescOrder;
+  sort(headerName: String) {
+    this.isDescOrder = !this.isDescOrder;
     this.orderHeader = headerName; //name, price..
-}
+  }
 
 
 }

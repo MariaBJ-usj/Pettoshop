@@ -53,10 +53,14 @@ app.get("/islogged", (req, res) => {
 })
 
 
-app.get("/logout", (req, res)=> {
-  req.session.destroy(error=> {
-    if(error) return res.status(409).json({msg: "logout error"});
-    res.status(200).json({msg:"logout ok"});
+app.get("/logout", (req, res) => {
+  req.session.destroy(error => {
+    if (error) return res.status(409).json({
+      msg: "logout error"
+    });
+    res.status(200).json({
+      msg: "logout ok"
+    });
 
   })
 })
@@ -130,7 +134,8 @@ app.get("/orders", async (request, response) => {
     $lookup: {
       from: "items",
       localField: "item_id",
-      foreignField: "_id"
+      foreignField: "_id",
+      as: "order_item"
     }
   }]).exec((error, orders) => {
     if (error) {
@@ -193,8 +198,7 @@ app.post("/addorder", async (req, res) => {
       Order.findOneAndUpdate({
           user_id: req.body.user_id,
           item_id: req.body.item_id
-        }, 
-        {
+        }, {
           quantity: req.body.quantity
         },
         (err, order) => {
@@ -226,9 +230,8 @@ app.put("/updateorder", async (req, res) => {
     }
     if (count > 0) {
       Order.findOneAndUpdate({
-        _id: req.body._id
-        }, 
-        {
+          _id: req.body._id
+        }, {
           quantity: req.body.quantity
         },
         (err, order) => {
